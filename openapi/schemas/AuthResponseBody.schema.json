@@ -1,0 +1,7 @@
+{
+  "type": "object",
+  "properties": {
+    "accessToken": { "type": "string" },
+    "user": { "$ref": "User.schema.json" }
+  }
+}

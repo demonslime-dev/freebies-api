@@ -1,0 +1,10 @@
+{
+  "type": "object",
+  "properties": {
+    "id": { "type": "string" },
+    "url": { "type": "string" },
+    "title": { "type": "string" },
+    "saleEndDate": { "type": "string" }
+  },
+  "examples": [{ "id": "ID", "url": "URL", "title": "TITLE", "saleEndDate": "SALE_END_DATE" }]
+}

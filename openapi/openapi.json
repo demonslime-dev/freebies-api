@@ -1,0 +1,101 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Freebies API",
+    "description": "APIs to retrieve & claim free games & assets automatically",
+    "version": "0.0.1"
+  },
+  "servers": [{ "url": "https://localhost:5000" }],
+  "paths": {
+    "/auth/login": {
+      "post": {
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "schemas/LoginCredentials.schema.json"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "a pet to be returned",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "schemas/AuthResponseBody.schema.json"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    },
+    "/auth/register": {
+      "post": {
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "schemas/RegisterCredentials.schema.json"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "schemas/SuccessResponse.schema.json"
+                    }, {
+                      "properties": {
+                        "data": {
+                          "$ref": "schemas/AuthResponseBody.schema.json"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/products": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "schemas/User.schema.json"
+                    }, {
+                      "type": "object",
+                      "properties": {
+                        "data": { }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
